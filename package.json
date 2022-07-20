@@ -1,0 +1,54 @@
+{
+  "name": "app_basic_mac",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "repository": {
+    "type":"git",
+    "url":"https://github.com/tuananhhust05/electron-basic-mac"
+  },
+  "scripts": {
+    "start": "electron .",
+    "start-package": "electron-packager .",
+    "electron-build": "electron-builder",
+    "build": "npm run electron-build",
+    "publish":"electron-builder --mac -publish always"
+  },
+  "build": {
+    "appId":"com.testmac.tuananh",
+    "productName":"basic testmac",
+    "extends": null,
+    "directories":{
+      "output":"electron-buid",
+      "buildResources":"build"
+    },
+    "mac":{
+      "publish":[
+        "github"
+      ]
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron-packager": "^15.5.1",
+    "electron-updater": "^5.0.5",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "electron": "19.0.8",
+    "electron-builder": "23.1.0"
+  }
+}

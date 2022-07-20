@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Messenger</title>     
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!--Phông chữ-->
+    <link href="https://fonts.googleapis.com/css2?family=Clicker+Script&family=Dancing+Script&family=Edu+VIC+WA+NT+Beginner:wght@500&family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">  
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!--Header-->
+    <nav style="position:fixed;width:100%" class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Message</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <button type="button" class="btn btn-primary">
+              <li style="display:flex" class="nav-item">
+                  Group
+                  <i style="padding:5px"class="fa-solid fa-plus"></i>
+              </li>
+            </button>
+            <button style="margin-left:30px" type="button" class="btn btn-primary">
+              <li style="display:flex;padding:0px;margin-bottom:-13px" class="nav-item">
+                  <p id="account_user">Account</p>
+                  <i style="padding:5px"class="fa-solid fa-file-invoice"></i>
+              </li>
+            </button>
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <!--main page-->
+    <div  id="page_main">
+      <!-- test api  -->
+      <!-- <button type="button" class="btn btn-primary">Primary</button>
+      <div id="h1"></div> -->
+      <div class="right-bar">
+        <h3 style="text-align:center;margin:25px">User Online</h3>
+      </div>
+
+      <div class="left-bar">
+        <h3 style="text-align:center;margin:25px">Conversation</h3>
+        <div class="conversation_mem">
+            <img src="https://image.vtc.vn/resize/th/upload/2021/03/03/messi-07382623.jpg">
+            </img>
+            <p>coversation</p>
+        </div>
+      </div>
+
+      <div class="send_message">
+        <textarea placeholder="Write something..."></textarea>
+        <div class="btn_function">
+          <button onclick="sendMesage()"type="button" href="#gotoBottom" class="btn btn-primary">
+            <i class="fa-solid fa-envelopes-bulk"></i>
+          </button>
+          <button id="scrollTopButton" type="button" class="btn btn-success">
+            <i class="fa-solid fa-upload"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="show_message">
+        <h3 style="font-family: 'Dancing Script';text-align: center;">
+          Please chose a conversation
+        </h3>
+      </div>
+     
+    </div>
+    
+
+    <!--Login page-->
+    <div id="login_page">
+      <h3 style="text-align:center">Login</h3>
+      <h3 style="margin-left:40% ;margin-top:100px">Login</h3>
+      <input id="username_login"style="width:30%;margin:2% 30%"class="form-control form-control-sm" type="text" placeholder="email" aria-label=".form-control-sm example">
+      <input id="password_login"style="width:30%;margin:2% 30%"class="form-control form-control-sm" type="text" placeholder="password" aria-label=".form-control-sm example">
+      <button id="login"style="margin:0.5% 40%;width:100px" type="button" class="btn btn-primary">Login</button>
+      <button id="btn_gotoRegister"style="margin:0.5% 40%;width:100px" type="button" class="btn btn-primary">Register</button>
+    </div>
+
+    
+    <!--Register page-->
+    <div id="register_page">
+      <h3 style="text-align:center">Register</h3>
+      <h3 style="margin-left:40% ;margin-top:100px">Register</h3>
+      <input id="username_regis" style="width:30%;margin:2% 30%"class="form-control form-control-sm" type="text" placeholder="username" aria-label=".form-control-sm example">
+      <input id="password_res" style="width:30%;margin:2% 30%"class="form-control form-control-sm" type="text" placeholder="password" aria-label=".form-control-sm example">
+      <input id="con_password_res" style="width:30%;margin:2% 30%"class="form-control form-control-sm" type="text" placeholder="confirm password" aria-label=".form-control-sm example">
+      <input id="email_res" style="width:30%;margin:2% 30%"class="form-control form-control-sm" type="text" placeholder="email" aria-label=".form-control-sm example">
+      <button id="btn_register"style="margin:0.5% 40%;width:100px" type="button" class="btn btn-primary">Register</button>
+      <button id="btn_goToLogin"style="margin:0.5% 40%;width:100px" type="button" class="btn btn-primary">Login</button>
+    </div>
+  </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
+    <script src="https://cdn.socket.io/4.5.0/socket.io.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
+    <script>
+        // connnect to socket access 
+        const socket={};
+        const url="https://messenger-api-express.herokuapp.com/api/";
+        socket.current = io("https://socket-server-mes.herokuapp.com/");
+        let user;
+        let listConversation;
+        let currentConvId;
+        
+
+        //left bar
+        // this function just do if user.id change 
+        const renderConvesationByApi = async(userCurrentId)=>{
+          $('.left-bar').html(` <h3 style="text-align:center;margin:25px">Conversation</h3>`);
+          const res = await axios.get(url+"conversations/" + userCurrentId);
+          let conversations=res.data;
+          listConversation=conversations; // cập nhật cho biến global 
+          // sort conv by status 
+          const conversationTrue= conversations.filter(m=>m.status===true);
+          const conversationFailse=conversations.filter(m=>m.status===false);
+          for(let t=0;t<conversationFailse.length;t++){
+            conversationTrue.push(conversationFailse[t])
+          }
+          conversations=conversationTrue;
+          for(let i=0;i<conversations.length;i++){
+            let name_conv="";
+            let mem_conv= conversations[i].members.filter(m=>m!==userCurrentId);
+            for(let j=0;j<mem_conv.length;j++){
+              const res2= await axios.get(url+'users/getuser/'+mem_conv[j]);
+              name_conv=name_conv +" "+ String(res2.data[0].username);
+            }
+            if(conversations[i].status===true){
+              $('.left-bar').append(`
+              <div onclick="renderMessageByConvId(this)" class="conversation_mem">
+                  <img src="https://image.vtc.vn/resize/th/upload/2021/03/03/messi-07382623.jpg">
+                  </img>
+                  <p style="color:red;font-weight: 900;font-size:15px">${name_conv}</p>
+                  <p style="display:none"id="idConv">${conversations[i]._id}</p>
+                  <p style="position:absolute;font-size:10px;right:30px">${conversations[i].updatedAt}</p>
+              </div>
+            `)
+            }
+            else{
+              $('.left-bar').append(`
+              <div onclick="renderMessageByConvId(this)" class="conversation_mem">
+                  <img src="https://image.vtc.vn/resize/th/upload/2021/03/03/messi-07382623.jpg">
+                  </img>
+                  <p>${name_conv}</p>
+                  <p style="display:none"id="idConv">${conversations[i]._id}</p>
+                  <p style="position:absolute;font-size:10px;right:30px">${conversations[i].updatedAt}</p>
+              </div>
+            `)
+            }
+          }
+        }
+
+        //message 
+        // set current ConvId
+        // set by click DOM; khi user click vào xem conversation
+        const renderMessageByConvId= async(DomElement)=>{ 
+           const conv_id=$(DomElement).find('#idConv').text()
+           // update data 
+           currentConvId=conv_id;
+           //update status
+           const res_status = await axios.post(url+"conversations/update", {id:currentConvId,status:false});
+           // rerender Listconversation 
+           renderConvesationByApi(user._id);
+
+           const res= await  axios.get(url+"messages/" + conv_id);
+           const messages=res.data;
+           $('.show_message').html(`<div></div>`);
+           for(let i=messages.length-1;i>=0;i--){
+            if(messages[i].sender==user._id){
+              const userSenderInfo = await axios.get(url+"users/getuser/"+messages[i].sender)
+              $('.show_message').append(`
+                <div style="margin-top:60px"class="message_right">
+                    <img style="position:absolute;margin-top:-35px;height:30px;width:30px;border-radius:50%" src="https://vcdn-thethao.vnecdn.net/2020/09/06/top-messi-5407-1599376186.jpg">
+                    <p style="margin-left:30px;color:black;position:absolute;margin-top:-35px">${userSenderInfo.data[0].username}</p>
+                    <p>${messages[i].text}</p>
+                    <p style="font-size:10px;position:absolute;margin-top:-20px">${messages[i].createdAt}</p>
+                </div>
+              `)
+            }
+            else{
+              const userSenderInfo = await axios.get(url+"users/getuser/"+messages[i].sender)
+              $('.show_message').append(`
+                <div style="margin-top:60px"class="message_left">
+                    <img style="position:absolute;margin-top:-35px;height:30px;width:30px;border-radius:50%" src="https://vcdn-thethao.vnecdn.net/2020/09/06/top-messi-5407-1599376186.jpg">
+                    <p style="margin-left:30px;position:absolute;margin-top:-35px">${userSenderInfo.data[0].username}</p>
+                    <p>${messages[i].text}</p>
+                    <p style="font-size:10px;position:absolute;margin-top:-20px">${messages[i].createdAt}</p>
+                </div>
+              `)
+            }
+           }
+           //đẩy tin chuối lên
+           $('.show_message').append(`
+                <div style="margin-top:60px"class="message_right">
+                    <p style="position:absolute;margin-top:-30px">hhhsvhds</p>
+                    <p>hsgsdysd</p>
+                    <p style="font-size:10px;position:absolute;margin-top:-20px">hgagsgdsg</p>
+                </div>
+           `);
+           $('.show_message').append(`
+                <div id="gotoBottom"style="margin-top:60px"class="message_right">
+                    <p style="position:absolute;margin-top:-30px">hhhsvhds</p>
+                    <p>hsgsdysd</p>
+                    <p style="font-size:10px;position:absolute;margin-top:-20px">hgagsgdsg</p>
+                </div>
+           `);
+
+        }
+        const renderMessageByConvId_real= async(conv_id)=>{ 
+          //let receiverId= ($(DomElement).find('#idConv').text());
+           //alert(($(DomElement).find('#idConv').text()))
+           //const conv_id=$(DomElement).find('#idConv').text()
+           // update data 
+           //currentConvId=conv_id;
+           
+           const res= await  axios.get(url+"messages/" + conv_id);
+           const messages=res.data;
+           $('.show_message').html(`<div></div>`);
+           for(let i=messages.length-1;i>=0;i--){
+            if(messages[i].sender==user._id){
+              const userSenderInfo = await axios.get(url+"users/getuser/"+messages[i].sender)
+              $('.show_message').append(`
+                <div style="margin-top:60px"class="message_right">
+                    <p style="position:absolute;margin-top:-30px">${userSenderInfo.data[0].username}</p>
+                    <p>${messages[i].text}</p>
+                    <p style="font-size:10px;position:absolute;margin-top:-20px">${messages[i].createdAt}</p>
+                </div>
+              `)
+            }
+            else{
+              const userSenderInfo = await axios.get(url+"users/getuser/"+messages[i].sender)
+              $('.show_message').append(`
+                <div style="margin-top:60px"class="message_left">
+                    <p style="position:absolute;margin-top:-30px">${userSenderInfo.data[0].username}</p>
+                    <p>${messages[i].text}</p>
+                    <p style="font-size:10px;position:absolute;margin-top:-20px">${messages[i].createdAt}</p>
+                </div>
+              `)
+            }
+           }
+           //đẩy tin chuối lên
+           $('.show_message').append(`
+                <div style="margin-top:60px"class="message_right">
+                    <p style="position:absolute;margin-top:-30px">hhhsvhds</p>
+                    <p>hsgsdysd</p>
+                    <p style="font-size:10px;position:absolute;margin-top:-20px">hgagsgdsg</p>
+                </div>
+           `);
+           $('.show_message').append(`
+                <div id="gotoBottom"style="margin-top:60px"class="message_right">
+                    <p style="position:absolute;margin-top:-30px">hhhsvhds</p>
+                    <p>hsgsdysd</p>
+                    <p style="font-size:10px;position:absolute;margin-top:-20px">hgagsgdsg</p>
+                </div>
+           `);
+        }
+        
+        // send message 
+        const sendMesage= async ()=>{
+           if(currentConvId!==undefined){
+              const res =await axios.get(url+"conversations/getconv/"+currentConvId);
+              const receivers= res.data.members.filter(m=>m!==user._id);
+              const newMessage= $('textarea').val()
+              const message = {
+                sender: user._id,
+                text: newMessage,  
+                conversationId: currentConvId,
+              };
+              try {
+                const res_conv = await axios.post(url+"conversations/update", {id:currentConvId,status:true});  // call api gửi tin nhắn vào db 
+                const res = await axios.post(url+"messages", message); 
+                console.log(res.data)
+                socket.current.emit("sendMessage", {
+                    senderId: user._id,
+                    receiverId: receivers,// 1 mảng 
+                    text: newMessage,
+                    idConversation:currentConvId,
+                    idmes:res.data._id
+                });
+                renderMessageByConvId_real(currentConvId)
+              }
+              catch(err){
+                console.log(err)
+              }
+           }
+           else{
+            alert("Please chose an conversation")
+           }
+        }
+
+         //loggin register hide show
+        $('#btn_goToLogin').click(function() {
+            $('#register_page').hide();
+            $('#login_page').show();
+        })
+        $('#btn_gotoRegister').click(function(){
+          $('#register_page').show();
+          $('#login_page').hide();
+        })
+        // call api login 
+        $('#login').click(function(){
+           const username_login= $('#username_login').val(); // lấy giá trị trong input 
+           const password_login=$('#password_login').val();
+           const loginInfo={email:username_login,password:password_login};
+           const authenticate= async()=>{
+            const res = await axios.post(url+"auth/login",loginInfo);
+            if(res.data.email!=undefined)
+            {
+              $('#login_page').hide();
+              $('#page_main').show();
+              // fix UI 
+              $('#account_user').text(res.data.username)
+              // paste data
+              user=res.data;
+              socket.current.emit("addUser", user._id);
+              // render conv 
+              renderConvesationByApi(user._id);
+            }
+            else{
+              alert("Thông tin đăng nhập không hợp lệ ")
+            }
+           }
+           authenticate();
+        })
+        // call api register
+        $('#btn_register').click(async ()=> {
+          const password=$('#password_res').val();
+          const confirmpassword=$('#con_password_res').val();
+          const email= $('#email_res').val();
+          const username= $('#username_regis').val();
+
+          if(password===confirmpassword){
+            const user = {
+              username: username,
+              email: email,
+              password: password,
+            };
+            try{
+              const res = await axios.post(url+"auth/register", user);
+              $('#register_page').hide();
+              $('#login_page').show();
+              if(res.data.username==username){
+                alert("Đăng ký thành công")
+              }
+            }
+            catch(err){
+              alert(err);
+            }
+          }
+          else{
+            alert("Failed confirm password")
+          }
+        })
+
+
+        // right-bar
+        const renderUserOnlineByUserId = async (users)=>{
+            // refresh right bar 
+            $('.right-bar').html(`<h3 style="text-align:center;margin:25px">User Online</h3>`)
+            for(let i=0;i<users.length;i++){
+              const res= await axios.get(url+'users/getuser/'+users[i].userId);
+              $('.right-bar').append(`
+                  <div onclick="CreateConv(this)" class="user_online">
+                    <a id="id_user_online"style="display:none">${res.data[0]._id}<a/>
+                    <img src="https://media.bongda.com.vn/files/anh.nguyen/2022/07/07/messi-0937.png">
+                      <div class="active"></div>
+                    </img>
+                    <p>${res.data[0].username}</p>
+                  </div>
+              `)
+            }
+        }
+      
+        const CreateConv = async(DomElement)=>{
+          let receiverId= ($(DomElement).find('#id_user_online').text());
+          const new_arr = listConversation.filter(m=>m.members.length<3);
+          const new_arr2= new_arr.filter(m=>m.members.includes(receiverId))
+          if(new_arr2.length>0){
+            alert("You had conversation with this person! Try again")
+          }
+          else{
+            const res = await axios.post(url+"conversations", {senderId:user._id,receiverId:receiverId});  // call api gửi tin nhắn vào db 
+            socket.current.emit("CreateConversation", {
+            _id:res.data._id,
+            senderId: user._id,  // gửi lên dữ liệu sender 
+            receiver:receiverId
+          });
+           renderConvesationByApi(user._id);
+          }
+        }
+          // hàm sẽ được khởi động khi có thông tin emit 
+        socket.current.on("getUsers", (users) => {
+          let userOnline=[];
+          if(user._id!==undefined){
+            userOnline= users.filter(m=>m.userId!==user._id);
+          }
+          renderUserOnlineByUserId(userOnline);
+        })
+
+         // listen event sendMes
+        socket.current.on("getMessage", (data) => {
+         if(data.idConversation==currentConvId){
+            renderMessageByConvId_real(currentConvId);
+            renderConvesationByApi(user._id)
+         }
+         else{
+          renderConvesationByApi(user._id)
+         }
+         })
+        socket.current.on("getConversation", (data) => {
+         if(data.members.includes(user._id)){
+          renderConvesationByApi(user._id);
+         }
+         })
+    </script>
+ 
+</html>
